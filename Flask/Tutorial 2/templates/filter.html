@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Filter Page{% endblock %}
+{% block content %}
+    <h1>Filter page</h1>
+    <!-- built in fitler to apply string functions in jinja -->
+    <p>{{some_text}}</p> 
+    <p>{{some_text|upper}}</p> 
+    <p>{{some_text|lower}}</p> 
+    <p>{{some_text|capitalize}}</p> 
+    <p>{{some_text|replace('l','L')}}</p> 
+    <p>{{some_text|reverse_string}}</p> <!-- Custom function made in app.py -->
+    <p>{{some_text|repeat}}</p>
+    <p>{{some_text|repeat(3)}}</p>
+    <p>{{some_text|alternate_case}}</p>
+{% endblock %}
