@@ -1,0 +1,76 @@
+# Web server configuration
+info:
+  version: "1.0.0"
+  webiste: "https://example.com"
+
+database:
+  type: sqlite
+  path: "/var/db/mydatabase.db"
+
+routes: # every - is a list item, and the path and methods are key-value pairs in a dictionary
+  - path: /api
+    methods: [GET, POST, PUT, DELETE]
+  - path: /admin
+    methods: [GET, POST]
+
+# Datatypes
+string_value: "Hello, World!"
+string_value2: 'Single quotes work too'
+string_value3: Without quotes, but be careful with special characters #, :, -, etc.
+multiline_string: This is a multiline string.
+  As long as it is indented properly, it will be treated as a single string.
+multiline_string2: |
+  This is another way to write a multiline string.
+  The | character preserves newlines, so the output will include line breaks.
+multiline_string3: >
+  This is yet another way to write a multiline string.
+  The > character folds newlines into spaces, so the output will be a single line.
+  
+  Single newlines are replaced with spaces, but double newlines are equal to a single newline in the output.
+
+int: 42
+float: 3.14
+bool: false # or true
+bool2: no # or yes
+bool3: off # or on
+null_val: null
+null_val2: ~
+list:
+  - item1
+  - item2
+  - item3
+list2: [1, 2, 3, 4, 5]
+map: {key1: value1, key2: value2, key3: value3}
+map2:
+  key1: value1
+  key2: value2
+  key3: value3
+date : 2024-06-01
+datetime: 2024-06-01T12:00:00Z
+
+# Nested structures
+nest_mapping:
+  level1:
+    level2:
+      level3: "Deeply nested value"
+nest_list:
+  - list1:
+    - item1
+    - item2
+  - list2:
+    - item3:
+      - 'item3a'
+
+# Features Below
+# & defines an anchor, and * references it. This allows you to reuse the same value in multiple places without duplication.
+anchor: &anchor_name [1, 2, 3]
+# Any update in the anchor will be reflected in all places where it is referenced
+new_item: *anchor_name
+
+person: &person_anchor
+  name: John Doe
+  age: 30
+  occupation: Software Engineer
+another_person:
+  <<: *person_anchor
+name: Jane Smith # Override the name while keeping other attributes from the anchor

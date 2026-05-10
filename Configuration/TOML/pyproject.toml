@@ -1,0 +1,33 @@
+# Config file
+name = "My Project"
+version = "1.0.0"
+description = "A sample project to demonstrate pyproject.toml"
+website = "https://example.com"
+timestamp = 2024-06-01T12:00:00Z
+dependencies = [
+    "requests>=2.25.1",
+    "numpy>=1.19.5"
+]
+
+[items]
+numbers = [1, 2, 3, 4, 5]
+letters = ["a", "b", "c", "d", "e"]
+
+[items.details]
+updated = true
+author = "John Doe"
+
+[database]
+host = "localhost"
+port = 5432
+username = "user"
+password = "password"
+
+[inline_table]
+inline = { key1 = "value1", key2 = "value2" }
+[[table_group]]
+name = "Table 1"
+[[table_group]]
+name = "Table 2"
+[[table_group]]
+name = "Table 3"

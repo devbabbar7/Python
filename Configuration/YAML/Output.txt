@@ -1,0 +1,46 @@
+{'info': {'version': '1.0.0', 'webiste': 'https://example.com'},
+    'database': {'type': 'sqlite', 'path': '/var/db/mydatabase.db'},
+    'routes': [{'path': '/api', 'methods': ['GET', 'POST', 'PUT', 'DELETE']},
+            {'path': '/admin', 'methods': ['GET', 'POST']}],
+    'string_value': 'Hello, World!',
+    'string_value2': 'Single quotes work too',
+    'string_value3': 'Without quotes, but be careful with special characters',
+    'multiline_string': 'This is a multiline string. As long as it is indented '
+                        'properly, it will be treated as a single string.',
+    'multiline_string2': 'This is another way to write a multiline string.\n'
+                        'The | character preserves newlines, so the output will '
+                        'include line breaks.\n',
+    'multiline_string3': 'This is yet another way to write a multiline string. '
+                        'The > character folds newlines into spaces, so the '
+                        'output will be a single line.\n'
+                        'Single newlines are replaced with spaces, but double '
+                        'newlines are equal to a single newline in the output.\n',
+    'int': 42,
+    'float': 3.14,
+    'bool': False,
+    'bool2': False,
+    'bool3': False,
+    'null_val': None,
+    'null_val2': None,
+    'list': ['item1', 'item2', 'item3'],
+    'list2': [1, 2, 3, 4, 5],
+    'map': {'key1': 'value1', 'key2': 'value2', 'key3': 'value3'},
+    'map2': {'key1': 'value1', 'key2': 'value2', 'key3': 'value3'},
+    'date': datetime.date(2024, 6, 1),
+    'datetime': datetime.datetime(2024, 6, 1, 12, 0, tzinfo=datetime.timezone.utc),
+    'nest_mapping': {'level1': {'level2': {'level3': 'Deeply nested value'}}},
+    'nest_list': [{'list1': ['item1', 'item2']},
+                {'list2': [{'item3': ['item3a']}]}],
+    'anchor': [1, 2, 3],
+    'new_item': [1, 2, 3],
+    'person': {'name': 'John Doe', 'age': 30, 'occupation': 'Software Engineer'},
+    'another_person': {'name': 'Jane Smith',
+                    'age': 30,
+                    'occupation': 'Software Engineer'}}
+This is a multiline string. As long as it is indented properly, it will be treated as a single string.
+
+This is another way to write a multiline string.
+The | character preserves newlines, so the output will include line breaks.
+
+This is yet another way to write a multiline string. The > character folds newlines into spaces, so the output will be a single line.
+Single newlines are replaced with spaces, but double newlines are equal to a single newline in the output.
