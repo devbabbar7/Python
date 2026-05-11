@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-todo_router = APIRouter()
+todo_router = APIRouter(prefix="/todos", tags=["todos"])
 
 all_todos = [
     {'todo_id': 1, 'todo_name': 'Sports', 'todo_description': 'Go to the gym'},
@@ -11,7 +11,7 @@ all_todos = [
 ]
 
 # GET single todo
-@todo_router.get('/todos/{todo_id}')
+@todo_router.get('/{todo_id}')
 def get_todo(todo_id: int):
     for todo in all_todos:
         if todo['todo_id'] == todo_id:
@@ -19,14 +19,14 @@ def get_todo(todo_id: int):
     return {'message': 'Todo not found'}
 
 # GET all todos
-@todo_router.get('/todos')
+@todo_router.get('/')
 def get_todos(first_n: int = None):
     if first_n:
         return all_todos[:first_n]
     return all_todos
 
 # POST todo
-@todo_router.post('/todos')
+@todo_router.post('/')
 def add_todo(todo: dict):
     new_todo_id = max(t['todo_id'] for t in all_todos) + 1
     todo['todo_id'] = new_todo_id
@@ -36,7 +36,7 @@ def add_todo(todo: dict):
     return {'message': 'Todo added successfully'}
 
 # PUT todo
-@todo_router.put('/todos/{todo_id}')
+@todo_router.put('/{todo_id}')
 def update_todo(todo_id: int, updated_todo: dict):
     for todo in all_todos:
         if todo['todo_id'] == todo_id:
@@ -52,7 +52,7 @@ def update_todo(todo_id: int, updated_todo: dict):
     return {"message": "Todo ID not found."}
 
 # DELETE todo
-@todo_router.delete('/todos/{todo_id}')
+@todo_router.delete('/{todo_id}')
 def delete_todo(todo_id: int):
     for ind, todo in enumerate(all_todos):
 

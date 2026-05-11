@@ -5,6 +5,7 @@ api = FastAPI()
 
 api.include_router(todo_router)
 
-@api.get('/')
+# tags are used to put them in groups in fastAPI's docs.
+@api.get('/', tags=['root'])
 def index():
     return {'message': 'Hello, World!'}
