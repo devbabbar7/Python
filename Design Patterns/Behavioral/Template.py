@@ -6,9 +6,11 @@ from abc import ABC, abstractmethod
 # ==========================================
 class BeverageMaker(ABC):
     """
-    The Abstract Class defines a template method that contains the skeleton
-    of an algorithm composed of calls to abstract and concrete operations.
+    The Abstract Class defines a template method containing the skeleton
+    of the beverage preparation algorithm.
     """
+    def __init__(self, with_condiments: bool = True) -> None:
+        self._with_condiments = with_condiments
 
     def make_beverage(self) -> None:
         """The Template Method: orchestrates the step sequence."""
@@ -19,14 +21,14 @@ class BeverageMaker(ABC):
             self.add_condiments()
         print("--- Drink is ready! ---\n")
 
-    # Common steps (Concrete implementations)
+    # Common steps (Shared concrete implementations)
     def boil_water(self) -> None:
         print("1. Boiling water...")
 
     def pour_in_cup(self) -> None:
         print("3. Pouring beverage into cup...")
 
-    # Primitive steps (Abstract methods to be overridden)
+    # Abstract steps (Must be implemented by subclasses)
     @abstractmethod
     def brew(self) -> None:
         pass
@@ -35,9 +37,9 @@ class BeverageMaker(ABC):
     def add_condiments(self) -> None:
         pass
 
-    # Hook (Provides default behavior, can be optionally overridden)
+    # Hook: Evaluates the instance configuration rather than hardcoding True
     def customer_wants_condiments(self) -> bool:
-        return True
+        return self._with_condiments
 
 
 # ==========================================
@@ -52,27 +54,21 @@ class TeaMaker(BeverageMaker):
 
 
 class CoffeeMaker(BeverageMaker):
-    def __init__(self, with_milk_and_sugar: bool = True):
-        self._with_condiments = with_milk_and_sugar
-
     def brew(self) -> None:
         print("2. Filtering coffee through drip filter...")
 
     def add_condiments(self) -> None:
         print("4. Adding steamed milk and brown sugar...")
 
-    def customer_wants_condiments(self) -> bool:
-        return self._with_condiments
-
 
 # ==========================================
 # 3. CLIENT EXECUTION
 # ==========================================
 if __name__ == "__main__":
-    print("--- Making Lemon Tea ---")
-    tea = TeaMaker()
+    print("--- Making Lemon Tea (With Condiments) ---")
+    tea = TeaMaker(with_condiments=True)
     tea.make_beverage()
 
-    print("--- Making Black Coffee (No Condiments) ---")
-    black_coffee = CoffeeMaker(with_milk_and_sugar=False)
+    print("--- Making Black Coffee (Without Condiments) ---")
+    black_coffee = CoffeeMaker(with_condiments=False)
     black_coffee.make_beverage()
